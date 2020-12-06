@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\zbn02\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
+                "D:\\Code\\Arduino_code\\libraries\\**",
+                "D:\\arduino-1.8.13\\libraries\\**",
+                "C:\\Users\\zbn02\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.7.4\\**"
+            ],
+            "forcedInclude": [],
+            "defines": [
+                "USBCON"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "compilerPath": "C:\\Mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
+}

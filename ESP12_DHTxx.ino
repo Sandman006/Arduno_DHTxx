@@ -11,8 +11,10 @@
 #define DHTPIN  5             //ESP-01S只有GPIO2复用，ESP-12系列可用其他引脚，免去换线的麻烦
 
 // Replace with your network details
-const char* ssid     = "Sandman";
-const char* password = "key147852369zbn";
+// const char* ssid     = "Sandman";
+// const char* password = "key147852369zbn";
+const char* ssid     = "SFA-Senior";
+const char* password = "woaisfair";
 
 ESP8266WebServer server(80);
 
@@ -84,14 +86,16 @@ void loop(void)
   server.handleClient();
 } 
 
-void gettemperature() {
+void gettemperature() 
+{
   // Wait at least 2 seconds seconds between measurements.
   // if the difference between the current time and last time you read
   // the sensor is bigger than the interval you set, read the sensor
   // Works better than delay for things happening elsewhere also
   unsigned long currentMillis = millis();
  
-  if(currentMillis - previousMillis >= interval) {
+  if(currentMillis - previousMillis >= interval) 
+  {
     // save the last time you read the sensor 
     previousMillis = currentMillis;   
 
@@ -100,7 +104,8 @@ void gettemperature() {
     humidity = dht.readHumidity();          // Read humidity (percent)
     temp_c = dht.readTemperature(false);     // Read temperature as C (not F)
     // Check if any reads failed and exit early (to try again).
-    if (isnan(humidity) || isnan(temp_c)) {
+    if (isnan(humidity) || isnan(temp_c)) 
+    {
       Serial.println("Failed to read from DHT sensor!");
       return;
     }

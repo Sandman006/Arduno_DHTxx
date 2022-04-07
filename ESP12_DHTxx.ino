@@ -2,8 +2,8 @@
    Based on ESP8266Webserver, DHTexample, and BlinkWithoutDelay (thank you)
    Version 1.0  5/3/2014  Version 1.0   Mike Barela for Adafruit Industries*/
 
-#include <ESP8266WiFi.h>
 #include <WiFiClient.h>
+#include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <DHT.h>
 
@@ -11,8 +11,6 @@
 #define DHTPIN  5             //ESP-01S只有GPIO2复用，ESP-12系列可用其他引脚，免去换线的麻烦
 
 // Replace with your network details
-// const char* ssid     = "Sandman";
-// const char* password = "key147852369zbn";
 const char* ssid     = "SFA-Senior";
 const char* password = "woaisfair";
 
@@ -25,12 +23,12 @@ ESP8266WebServer server(80);
 // of fiddling to find the right value, but in general the faster the CPU the
 // higher the value.  The default for a 16mhz AVR is a value of 6.  For an
 // Arduino Due that runs at 84mhz a value of 30 works.
-// This is for the ESP8266 processor on ESP-01 
+// This is for the ESP8266 processor on ESP-01
 
-DHT dht(DHTPIN, DHTTYPE, 11); // 11 works fine for ESP8266
+DHT dht(DHTPIN, DHTTYPE, 22); // 11 works fine for ESP8266
  
 float humidity, temp_c;  // Values read from sensor
-String webString="";     // String to display
+String webString = "";     // String to display
 
 // Generally, you should use "unsigned long" for variables that hold time
 unsigned long previousMillis = 0;        // will store last temp was read
@@ -52,28 +50,29 @@ void setup(void)
   Serial.print("\n\r \n\rWorking to connect");
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) 
+  {
     delay(500);
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("DHT Weather Reading Server");
   Serial.print("Connected to ");
   Serial.println(ssid);
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
    
+   //初始化WebServer
   server.on("/", handle_root);
   
   server.on("/temp", [](){  // if you add this subdirectory to your webserver call, you get text below :)
     gettemperature();       // read sensor
-    webString="Temperature: "+String((int)temp_c)+ "C";   // Arduino has a hard time with float to string
+    webString="Temperature: "+String(temp_c)+ "C";   // Arduino has a hard time with float to string
     server.send(200, "text/plain", webString);            // send to someones browser when asked
   });
 
   server.on("/humidity", [](){  // if you add this subdirectory to your webserver call, you get text below :)
     gettemperature();           // read sensor
-    webString="Humidity: "+String((int)humidity)+"%";
+    webString="Humidity: "+String(humidity)+"%";
     server.send(200, "text/plain", webString);               // send to someones browser when asked
   });
   
@@ -85,6 +84,10 @@ void loop(void)
 {
   server.handleClient();
 } 
+
+
+
+
 
 void gettemperature() 
 {
@@ -107,6 +110,7 @@ void gettemperature()
     if (isnan(humidity) || isnan(temp_c)) 
     {
       Serial.println("Failed to read from DHT sensor!");
+      
       return;
     }
   }

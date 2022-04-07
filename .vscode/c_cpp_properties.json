@@ -4,9 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "C:\\Users\\zbn02\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
-                "D:\\Code\\Arduino_code\\libraries\\**",
-                "D:\\arduino-1.8.13\\libraries\\**",
-                "C:\\Users\\zbn02\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.7.4\\**"
+                "D:\\Hardware\\Arduino\\libraries\\**",
+                "D:\\arduino-1.8.15\\libraries\\**",
+                "C:\\Users\\zbn02\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.0\\**"
             ],
             "forcedInclude": [],
             "defines": [
